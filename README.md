@@ -68,9 +68,54 @@ tùy chỉnh data và phản hồi:
 ![image](https://user-images.githubusercontent.com/109157942/193226095-00579839-966a-4c58-a3e4-0228c661ad8a.png)
 ![image](https://user-images.githubusercontent.com/109157942/193226534-837292fa-6ae4-405d-b85d-a416e269982b.png)
 
+### lưu ý: các giao thức trong http vd: bảng users các API sẽ được tạo
 
-
- ### sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
+<div align="center">
+    <table>
+      <theader>
+        <th>Method</th>
+        <th> url</th>
+        <th>Code</th>
+        <th> Response</th>
+      </theader>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>/users</td>
+          <td>200</td>
+          <td>List<user>
+          </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/users/:id</td>
+          <td>200</td>
+          <td>user</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/users</td>
+          <td>2001</td>
+          <td>user</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>/users/:id</td>
+          <td>200</td>
+          <td>user</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/users/:id</td>
+          <td>200</td>
+          <td>user</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+### sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
 
 ![image](https://user-images.githubusercontent.com/109157942/193221848-967b3914-a4da-4d16-8fe8-4a60686e07d7.png)
 
