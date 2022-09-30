@@ -21,11 +21,9 @@ diện người dùng và UX trong một dự án.
    </theader>
   <tbody>
   <td>
-   <p>1: Mock  là gì?</p>
+   <p>1: Mock API  là gì?</p>
    <p>2: Tại sao lại sử dụng mockAPI?</p>
    <p>3: Cách sử dụng?</p>
-   <p>4: Thiết lập dự án</p>
-   <p>5: kết luận </p>
    </td>
    </tbody>
    </table>
@@ -42,7 +40,9 @@ diện người dùng và UX trong một dự án.
 > cho các nhà phát triển thử nghiệm đơn vị và xác định các bước ban đầu\
 > bạn có thể yêu cầu một API có sẵn để thử nghiệm hoặc trình diễn của người tiêu dùng trước khi bạn cam kết phát triển nó
 # Cách sử dụng 
-
+ 
+ bạn có thể tạo mockAPI [tại đây](https://mockapi.io/projects)
+ 
 > 1 tạo sự án mới:
 
 chọn new project(+)
@@ -60,8 +60,14 @@ nhập tên bảng
 
 ![image](https://user-images.githubusercontent.com/109157942/193216573-06903c7b-6b5a-4087-9ab8-1e054a8c1beb.png)
 
-nhập tên cột và thuộc tính 
+nhập tên cột và kiểu dữ liệu 
 ![image](https://user-images.githubusercontent.com/109157942/193217710-ad8741b6-5fd1-430a-8f9f-f99a5c6ab3b3.png)
+
+tùy chỉnh data và phản hồi:
+
+![image](https://user-images.githubusercontent.com/109157942/193226095-00579839-966a-4c58-a3e4-0228c661ad8a.png)
+![image](https://user-images.githubusercontent.com/109157942/193226534-837292fa-6ae4-405d-b85d-a416e269982b.png)
+
 
 > lưu ý: các giao thức trong http vd: bảng users  các API sẽ được tạo  
 
@@ -116,3 +122,34 @@ nhập tên cột và thuộc tính
    </tbody>
    </table>
 </div>
+
+###### sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
+
+![image](https://user-images.githubusercontent.com/109157942/193221848-967b3914-a4da-4d16-8fe8-4a60686e07d7.png)
+
+bạn có thể xem dữ liệu của mình thông qua url trong API endpoint hoặc bấm vào tên endpoint(table)
+
+![image](https://user-images.githubusercontent.com/109157942/193226917-677e290d-59fc-43a9-8609-79af1e4fffdc.png)
+
+vd : https://63369b9d65d1e8ef266f9da2.mockapi.io/api/users
+> xác định mối quan hệ 
+
+để xác định mối quan giữa hai bảng với nhau  bằng cách nhấp vào một vòng tròn nhỏ bên cạnh nó và kết nối nó với tài nguyên đích bằng nút shift và ấn enter
+
+vd 1 user có thể có nhiều blog 
+
+![image](https://user-images.githubusercontent.com/109157942/193224382-895c4001-d788-44bf-8649-1e9cd6b016c8.png)
+![image](https://user-images.githubusercontent.com/109157942/193224797-653c1bff-4351-4a57-b6aa-5d716c9dfd7b.png)
+
+
+> phân trang trong mockAPI
+
+**/users?page=1&limit=10** hoặc có thể viết tắt là **/users?p=1&l=10**
+
+> sắp xếp dữ liệu 
+
+/users?sortby=desc
+bạn có thể sử dụng sortby , orderBy hoặc orderby 
+
+sắp xếp theo asc hoặc desc 
+
