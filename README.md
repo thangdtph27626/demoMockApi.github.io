@@ -23,7 +23,8 @@ diện người dùng và UX trong một dự án.
   <td>
    <p>1: Mock API  là gì?</p>
    <p>2: Tại sao lại sử dụng mockAPI?</p>
-   <p>3: Cách sử dụng?</p>
+   <p>3: Cách sử dụng mock API?</p>
+   <p>4: curd với mockapi & axios</p>
    </td>
    </tbody>
    </table>
@@ -146,3 +147,180 @@ bạn có thể sử dụng sortby , orderBy hoặc orderby
 
 sắp xếp theo asc hoặc desc 
 
+# CURD với mockapi & axios
+
+> hiển thị thông tin sinh viên lên table 
+
+
+```md
+
+let SinhVienView = "/view"
+let SinhVienAPI = "https://63369b9d65d1e8ef266f9da2.mockapi.io/api/users"
+
+function loadData() {
+    $.ajax({
+        type: "GET", contentType: "application/json", url: SinhVienAPI, success: function (responseData) {
+            console.log(responseData)
+            $("#dataSinhVien").html(responseData.map(function (item) {
+                return `
+                <tr>
+                <td>${item.id}</td>
+                <td>${item.name}</td>
+                 <td>
+                        <button
+                                type="button"
+                                class="btn btn-primary"
+                               onclick="openModalUpdateSinhVien(${item.id})">
+                            Sửa
+                        </button>
+                        </button>
+                        <button
+                                type="button"
+                                class="btn btn-danger"
+                                data-toggle="modal"
+                               onclick="openModalRemoveSinhVien(${item.id})">
+                            Xoá
+                        </button>
+                    </td>
+                    </tr>
+                `
+            }))
+        }, error: function (e) {
+            console.log("ERROR : ", e);
+        }
+    });
+}
+
+```
+
+> thêm sinh viên 
+
+```
+$("#form_create_sinh_vien").submit(function (event) {
+    event.preventDefault();
+    let tenSinhVien = $("#tenSinhVien").val();
+    console.log(tenSinhVien)
+    let sinhVienRequest = {};
+    sinhVienRequest["name"] = tenSinhVien;
+    console.log(sinhVienRequest)
+    if (tenSinhVien.length === 0) {
+        $("#sinh_vien_error").text("Tên sinh vien không được để trống");
+    } else if (tenSinhVien.length < 6) {
+        $("#sinh_vien_error").text("Tên sinh vien tối thiếu 6 ký tự");
+    } else {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: SinhVienAPI,
+            data: JSON.stringify(sinhVienRequest),
+            dataType: 'json',
+            success: function () {
+                window.open(SinhVienView, '_self');
+                $("#modal_create").modal("hide");
+            },
+            error: function (e) {
+                console.log("ERROR : ", e);
+            }
+        });
+    }
+});
+
+```
+
+> update sinh viên 
+
+```
+function openModalUpdateSinhVien(idSinhVien) {
+    $("#modal_update_sinh_vien").modal('show');
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: SinhVienAPI + "/" + idSinhVien,
+        data: JSON.stringify(idSinhVien),
+        dataType: 'json',
+        success: function (responseData) {
+            console.log(responseData)
+            $("#id_sinh_vien_update").val(responseData.id);
+            $("#ten_sinh_vien_update").val(responseData.name);
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+        }
+    });
+}
+
+$("#form_sinh_vien_update").submit(function (event) {
+    event.preventDefault();
+    let tenSinhVien = $("#ten_sinh_vien_update").val();
+    let idSinhvien = $("#id_sinh_vien_update").val();
+    let sinhVienRequest = {};
+    sinhVienRequest["name"] = tenSinhVien;
+    if (tenSinhVien.length === 0) {
+        $("#errorMessageUpdate").text("Tên sinh vien không được để trống");
+    } else if (tenSinhVien.length < 6) {
+        $("#errorMessageUpdate").text("Tên sinh vien tối thiếu 6 ký tự");
+    } else {
+        $.ajax({
+            type: "PUT",
+            contentType: "application/json",
+            url: SinhVienAPI + "/" + idSinhvien,
+            data: JSON.stringify(sinhVienRequest),
+            dataType: 'json',
+            success: function () {
+                window.open(SinhVienView, '_self');
+                $("#modal_update_hoc_ky").modal("hide");
+            },
+            error: function (e) {
+                console.log("ERROR : ", e);
+            }
+        });
+    }
+});
+
+```
+
+> xóa sinh viên 
+
+```
+function openModalRemoveSinhVien(sinhvienId) {
+    console.log(sinhvienId)
+    $("#modal_sinh_vien_remove").modal('show');
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: SinhVienAPI + "/" + sinhvienId,
+        data: JSON.stringify(sinhvienId),
+        dataType: 'json',
+        success: function () {
+            $("#remove_sinh_vien").val(sinhvienId);
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+        }
+    });
+}
+
+$("#form_sinh_vien_delete").submit(function (event) {
+    event.preventDefault();
+    let sinhvienId = $("#remove_sinh_vien").val();
+
+    $.ajax({
+        type: "DELETE",
+        contentType: "application/json",
+        url: SinhVienAPI + "/" + sinhvienId,
+        dataType: 'json',
+        success: function () {
+            window.open(SinhVienView, '_self');
+            $("#modal_update_hoc_ky").modal("hide");
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+        }
+    });
+
+});
+
+```
+
+> lưu ý bạn có thể lấy html [tại đây](https://github.com/thangdtph27626/demo_crud_ajax.github.io)\
+> bạn có thể tìm hiểu về ajax [tại đây](https://thangdtph27626.github.io/demo_crud_ajax.github.io/)
