@@ -116,7 +116,7 @@ tùy chỉnh data và phản hồi:
     </table>
   </div>
 
- sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
+ ### sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
 
 ![image](https://user-images.githubusercontent.com/109157942/193221848-967b3914-a4da-4d16-8fe8-4a60686e07d7.png)
 
