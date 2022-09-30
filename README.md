@@ -71,49 +71,7 @@ tùy chỉnh data và phản hồi:
 
 ### lưu ý: các giao thức trong http vd: bảng users các API sẽ được tạo
 
-<div align="center">
-    <table>
-      <theader>
-        <th>Method</th>
-        <th> url</th>
-        <th>Code</th>
-        <th> Response</th>
-      </theader>
-      <tbody>
-        <tr>
-          <td>GET</td>
-          <td>/users</td>
-          <td>200</td>
-          <td>List<user>
-          </td>
-        </tr>
-        <tr>
-          <td>GET</td>
-          <td>/users/:id</td>
-          <td>200</td>
-          <td>user</td>
-        </tr>
-        <tr>
-          <td>POST</td>
-          <td>/users</td>
-          <td>2001</td>
-          <td>user</td>
-        </tr>
-        <tr>
-          <td>PUT</td>
-          <td>/users/:id</td>
-          <td>200</td>
-          <td>user</td>
-        </tr>
-        <tr>
-          <td>DELETE</td>
-          <td>/users/:id</td>
-          <td>200</td>
-          <td>user</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+![image](https://user-images.githubusercontent.com/109157942/193247355-b6487bbe-72e7-4efc-896b-084ce9881da6.png)
   
   
 ### sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
