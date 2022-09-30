@@ -73,57 +73,50 @@ tùy chỉnh data và phản hồi:
 
 
 <div align="center">
- <table >
-  <theader>
-  <th>
-   Method
-   </th>
-    <th>
-  url
-   </th>
-    <th>
-   Code 
-   </th>
-    <th>
-   Response 
-   </th>
-   </theader>
-  <tbody>
-     <tr>
-        <td>GET</td>
-        <td>/users</td>
-        <td>200</td>
-        <td>List<user></td>
-      </tr>
-      <tr>
-        <td>GET</td>
-        <td>/users/:id</td>
-        <td>200</td>
-        <td>user</td>
-      </tr>
-      <tr>
-        <td>POST</td>
-        <td>/users</td>
-        <td>2001</td>
-        <td>user</td>
-      </tr>
-      <tr>
-        <td>PUT</td>
-        <td>/users/:id</td>
-        <td>200</td>
-        <td>user</td>
-      </tr>
-      <tr>
-        <td>DELETE</td>
-        <td>/users/:id</td>
-        <td>200</td>
-        <td>user</td>
-      </tr>
-   </tbody>
-   </table>
-</div>
+    <table>
+      <theader>
+        <th>Method</th>
+        <th> url</th>
+        <th>Code</th>
+        <th> Response</th>
+      </theader>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>/users</td>
+          <td>200</td>
+          <td>List<user>
+          </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/users/:id</td>
+          <td>200</td>
+          <td>user</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/users</td>
+          <td>2001</td>
+          <td>user</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>/users/:id</td>
+          <td>200</td>
+          <td>user</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/users/:id</td>
+          <td>200</td>
+          <td>user</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-###### sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
+ sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
 
 ![image](https://user-images.githubusercontent.com/109157942/193221848-967b3914-a4da-4d16-8fe8-4a60686e07d7.png)
 
