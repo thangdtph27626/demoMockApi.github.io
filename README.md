@@ -142,6 +142,7 @@ vd 1 user có thể có nhiều blog
 > sắp xếp dữ liệu 
 
 /users?sortby=desc
+
 bạn có thể sử dụng sortby , orderBy hoặc orderby 
 
 sắp xếp theo asc hoặc desc 
