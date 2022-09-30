@@ -69,7 +69,7 @@ tùy chỉnh data và phản hồi:
 ![image](https://user-images.githubusercontent.com/109157942/193226534-837292fa-6ae4-405d-b85d-a416e269982b.png)
 
 
-> lưu ý: các giao thức trong http vd: bảng users  các API sẽ được tạo  
+### lưu ý: các giao thức trong http vd: bảng users  các API sẽ được tạo  
 
 
 <div align="center">
