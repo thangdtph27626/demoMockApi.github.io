@@ -46,6 +46,74 @@ diện người dùng và UX trong một dự án.
 
 ![image](https://user-images.githubusercontent.com/109157942/193434653-a2ed05d2-85af-4011-b5f0-9d35ea1d916e.png)
 
+> các API thao tác 
+
+ <table border="1px">
+                    <thead>
+                        <th>method</th>
+                        <th>url</th>
+                        <th>code</th>
+                        <th>respone</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/products</td>
+                            <td>200</td>
+                            <td>List</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/products/:id</td>
+                            <td>200</td>
+                            <td>products</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/products</td>
+                            <td>200</td>
+                            <td>products</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/products/:id</td>
+                            <td>200</td>
+                            <td>products</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/products/:id</td>
+                            <td>200</td>
+                            <td>products</td>
+                        </tr>
+          </tbody>
+</table>
+                
+     
+> chú thích về ajax 
+
+```
+
+// $.ajax({
+//     type: Một loại yêu cầu http, ví dụ như POST, PUT và GET. Mặc định là GET,
+//     contentType: Chuỗi chứa một loại nội dung khi gửi nội dung MIME tới máy chủ.Default là "application / x-www-form-urlencoded; charset = UTF-8,
+//     url: Một chuỗi chứa URL mà yêu cầu được gửi đến,
+//     data: Một dữ liệu được gửi đến máy chủ. Nó có thể là đối tượng JSON, chuỗi hoặc mảng,
+//     dataType: Loại dữ liệu mà bạn đang mong đợi trả lại từ máy chủ,
+//     success: function (responseData) { // Một hàm gọi lại sẽ được thực thi khi yêu cầu Ajax thành công
+//     // responseData là đối tượng trả về chứa tất cả các trường 
+//          window.open(SinhVienView, '_self');   
+// //windown.open: mở ra một cửa sổ trình duyệt mới hoặc một tab mới, tùy thuộc vào cài đặt trình duyệt của bạn và các giá trị tham số
+// // _self: URL thay thế trang hiện tại
+//          $("#demo").modal("hide"); 
+// // tìm thẻ có id là demo và thực hiện ẩn thẻ
+//     },
+//     error: function (e) {  // Một hàm gọi lại được thực thi khi yêu cầu không thành công.
+//         console.log("ERROR : ", e);
+//     }
+// });
+
+```
 
 
 > hiển thị thông tin sản phẩm lên table 
