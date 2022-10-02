@@ -485,4 +485,4 @@ $("#form_product_delete").submit(function(event){
 
 ```
 
-> lưu ý bạn có thể lấy toàn bộ code trong bài viết  [tại đây]([https://github.com/thangdtph27626/demo_crud_ajax.github.io](https://github.com/thangdtph27626/demoMockApi.github.io))
+> lưu ý bạn có thể lấy toàn bộ code trong bài viết  [tại đây](https://github.com/thangdtph27626/demoMockApi.github.io)
