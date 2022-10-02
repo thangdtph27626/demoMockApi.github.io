@@ -150,7 +150,7 @@ diện người dùng và UX trong một dự án.
 // "https://63379dcf132b46ee0be3304d.mockapi.io/api/products" là đườg dẫn api của project demo và thực hiện thao tác trên bảng products
 let productAPI = "https://63379dcf132b46ee0be3304d.mockapi.io/api/products"
 
-// hàm lấy thông tin của bảng products và hiển thị thông tin của products
+// hàm lấy thông tin phản hồi và hiển thị thông tin của products
 function loadData(){
         $.ajax({
             type:"GET",
