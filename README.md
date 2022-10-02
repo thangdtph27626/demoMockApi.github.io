@@ -23,7 +23,7 @@ diện người dùng và UX trong một dự án.
   <td>
    <p>1: Mock API  là gì?</p>
    <p>2: Tại sao lại sử dụng mockAPI?</p>
-   <p>: curd với mockapi & axios</p>
+   <p>: curd với mockapi & AJAX</p>
    </td>
    </tbody>
    </table>
@@ -40,7 +40,7 @@ diện người dùng và UX trong một dự án.
 > cho các nhà phát triển thử nghiệm đơn vị và xác định các bước ban đầu\
 > bạn có thể yêu cầu một API có sẵn để thử nghiệm hoặc trình diễn của người tiêu dùng trước khi bạn cam kết phát triển nó
 
-# CURD với mockapi & axios 
+# CURD với mockapi & AJAX 
 
 ## demo thao tác với bảng products 
 
