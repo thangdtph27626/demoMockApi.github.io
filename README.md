@@ -23,8 +23,7 @@ diện người dùng và UX trong một dự án.
   <td>
    <p>1: Mock API  là gì?</p>
    <p>2: Tại sao lại sử dụng mockAPI?</p>
-   <p>3: Cách sử dụng mock API?</p>
-   <p>4: curd với mockapi & axios</p>
+   <p>: curd với mockapi & axios</p>
    </td>
    </tbody>
    </table>
@@ -40,243 +39,381 @@ diện người dùng và UX trong một dự án.
 > giúp cho khách hàng lập kế hoạc và xác nhận các thực thi thử ngiệm\
 > cho các nhà phát triển thử nghiệm đơn vị và xác định các bước ban đầu\
 > bạn có thể yêu cầu một API có sẵn để thử nghiệm hoặc trình diễn của người tiêu dùng trước khi bạn cam kết phát triển nó
-# Cách sử dụng 
- 
- bạn có thể tạo mockAPI [tại đây](https://mockapi.io/projects)
- 
-> 1 tạo sự án mới:
 
-chọn new project(+)
+# CURD với mockapi & axios 
 
-![image](https://user-images.githubusercontent.com/109157942/193208448-786043f8-572d-46bf-8f2f-db1895488fa2.png)
+## demo thao tác với bảng products 
 
-![image](https://user-images.githubusercontent.com/109157942/193209705-47b373bb-b00a-4cdb-8d97-feec2c373df1.png)
-> 2 add resource
-
-  chọn new resource
-  
-![image](https://user-images.githubusercontent.com/109157942/193216318-b3b76d04-1de3-4632-bb30-631d16a524db.png)
-
-nhập tên bảng 
-
-![image](https://user-images.githubusercontent.com/109157942/193216573-06903c7b-6b5a-4087-9ab8-1e054a8c1beb.png)
-
-nhập tên cột và kiểu dữ liệu 
-![image](https://user-images.githubusercontent.com/109157942/193217710-ad8741b6-5fd1-430a-8f9f-f99a5c6ab3b3.png)
-
-tùy chỉnh data và phản hồi:
-
-![image](https://user-images.githubusercontent.com/109157942/193226095-00579839-966a-4c58-a3e4-0228c661ad8a.png)
-![image](https://user-images.githubusercontent.com/109157942/193226534-837292fa-6ae4-405d-b85d-a416e269982b.png)
-
-### lưu ý: các giao thức trong http vd: bảng users các API sẽ được tạo
-
-![image](https://user-images.githubusercontent.com/109157942/193247355-b6487bbe-72e7-4efc-896b-084ce9881da6.png)
-  
-  
-### sau khi khởi tạo resource  bạn sẽ nhận được một table như hình: 
-
-![image](https://user-images.githubusercontent.com/109157942/193221848-967b3914-a4da-4d16-8fe8-4a60686e07d7.png)
-
-bạn có thể xem dữ liệu của mình thông qua url trong API endpoint hoặc bấm vào tên endpoint(table)
-
-![image](https://user-images.githubusercontent.com/109157942/193226917-677e290d-59fc-43a9-8609-79af1e4fffdc.png)
-
-vd : https://63369b9d65d1e8ef266f9da2.mockapi.io/api/users
-> xác định mối quan hệ 
-
-để xác định mối quan giữa hai bảng với nhau  bằng cách nhấp vào một vòng tròn nhỏ bên cạnh nó và kết nối nó với tài nguyên đích bằng nút shift và ấn enter
-
-vd 1 user có thể có nhiều blog 
-
-![image](https://user-images.githubusercontent.com/109157942/193224382-895c4001-d788-44bf-8649-1e9cd6b016c8.png)
-![image](https://user-images.githubusercontent.com/109157942/193224797-653c1bff-4351-4a57-b6aa-5d716c9dfd7b.png)
+![image](https://user-images.githubusercontent.com/109157942/193434653-a2ed05d2-85af-4011-b5f0-9d35ea1d916e.png)
 
 
-> phân trang trong mockAPI
 
-**/users?page=1&limit=10** hoặc có thể viết tắt là **/users?p=1&l=10**
+> hiển thị thông tin sản phẩm lên table 
 
-> sắp xếp dữ liệu 
 
-/users?sortby=desc
-
-bạn có thể sử dụng sortby , orderBy hoặc orderby 
-
-sắp xếp theo asc hoặc desc 
-
-# CURD với mockapi & axios
-
-> hiển thị thông tin sinh viên lên table 
-
+1 html
 
 ```md
 
-let SinhVienView = "/view"
-let SinhVienAPI = "https://63369b9d65d1e8ef266f9da2.mockapi.io/api/users"
-
-function loadData() {
-    $.ajax({
-        type: "GET", contentType: "application/json", url: SinhVienAPI, success: function (responseData) {
-            console.log(responseData)
-            $("#dataSinhVien").html(responseData.map(function (item) {
-                return `
-                <tr>
-                <td>${item.id}</td>
-                <td>${item.name}</td>
-                 <td>
-                        <button
-                                type="button"
-                                class="btn btn-primary"
-                               onclick="openModalUpdateSinhVien(${item.id})">
-                            Sửa
-                        </button>
-                        </button>
-                        <button
-                                type="button"
-                                class="btn btn-danger"
-                                data-toggle="modal"
-                               onclick="openModalRemoveSinhVien(${item.id})">
-                            Xoá
-                        </button>
-                    </td>
+<table id="custom-table"
+                       class="table table-bordered m-table d-sm-table m-table--head-bg-primary">
+                    <thead>
+                    <tr>
+                        <td>mã </td>
+                        <td>tên</td>
+                        <td>số lượng</td>
+                        <td>giá nhập </td>
+                        <td>giá bán</td>
+                        <td>miêu tả</td>
+                        <td>hành động</td>
                     </tr>
-                `
-            }))
-        }, error: function (e) {
-            console.log("ERROR : ", e);
-        }
-    });
+                    </thead>
+                    <tbody id="dataProduct">
+                    
+                    </tbody>
+                </table>
+                
+```
+
+2 js
+
+```md
+
+// "https://63379dcf132b46ee0be3304d.mockapi.io/api/products" là đườg dẫn api của project demo và thực hiện thao tác trên bảng products
+let productAPI = "https://63379dcf132b46ee0be3304d.mockapi.io/api/products"
+
+// hàm lấy thông tin của bảng products và hiển thị thông tin của products
+function loadData(){
+        $.ajax({
+            type:"GET",
+            contentType: "application/json",
+            url: productAPI,
+            success: function(reponData){
+            // responseData là đối tượng trả về chứa tất cả các trường 
+                $("#dataProduct").html(reponData.map(function(item){
+                    return `
+                    <tr>
+                            <td>${item.id}</td>
+                            <td>${item.ten}</td>
+                            <td>${item.so_luong}</td>
+                            <td>${item.gia_nhap}</td>
+                            <td>${item.gia_ban}</td>
+                            <td>${item.mieu_ta}</td>
+                            <td>
+                            <button class="btn btn-primary"
+                            onclick=update(${item.id})>update</button>
+                            <button class="btn btn-primary"
+                            onclick=deleteProduct(${item.id})>delete</button>
+                            </td>
+                        </tr>
+                    `
+                }))
+            },
+            error: function(e){
+                console.log(e)
+            }
+
+
+        })
 }
 
 ```
 
-> thêm sinh viên 
+> thêm products
+
+1 html
 
 ```
-$("#form_create_sinh_vien").submit(function (event) {
-    event.preventDefault();
-    let tenSinhVien = $("#tenSinhVien").val();
-    console.log(tenSinhVien)
-    let sinhVienRequest = {};
-    sinhVienRequest["name"] = tenSinhVien;
-    console.log(sinhVienRequest)
-    if (tenSinhVien.length === 0) {
-        $("#sinh_vien_error").text("Tên sinh vien không được để trống");
-    } else if (tenSinhVien.length < 6) {
-        $("#sinh_vien_error").text("Tên sinh vien tối thiếu 6 ký tự");
-    } else {
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: SinhVienAPI,
-            data: JSON.stringify(sinhVienRequest),
-            dataType: 'json',
-            success: function () {
-                window.open(SinhVienView, '_self');
-                $("#modal_create").modal("hide");
-            },
-            error: function (e) {
-                console.log("ERROR : ", e);
-            }
-        });
-    }
-});
+                <!-- begin thêm mới product-->
+                <div class="m-portlet__body">
+                    <div class="row">
+                        <div class="col-6 d-inline"
+                        >
+                            <button
+                                    data-toggle="modal"
+                                    data-target="#modal_create"
+                                    class="col-12 col-sm-8 col-md-4 btn btn-success">
+                                Thêm product
+                            </button>
+                            <div class="modal fade "
+                                 id="modal_create"
+                                 tabindex="-1"
+                                 aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <form id="form_create_product">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Thêm product</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Tên sản phẩm</label>
+                                                    <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="ten">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-form-label">số lượng</label>
+                                                    <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="soLuong">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-form-label">giá nhập</label>
+                                                    <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="giaNhap">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-form-label">giá bán</label>
+                                                    <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="giaBan">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-form-label">mô tả</label>
+                                                                <textarea id="my-textarea" class="form-control" name="" rows="3" id="moTa"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Hủy
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Thêm mới
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end Thêm Mới product-->
+                
+```
+
+2 js
+
+
+```
+
+$("#form_create_product").submit(function(event){
+    event.preventDefault()
+    var newProduct = {}
+    newProduct["ten"] = $("#ten").val()
+    newProduct["so_luong"] = $("#soLuong").val()
+    newProduct["gia_nhap"] = $("#giaNhap").val()
+    newProduct["gia_ban"] = $("#giaBan").val()
+    newProduct["mieu_ta"] = $("#moTa").val()
+
+// thực hiện load data lên server 
+    $.ajax({
+        type:"POST",
+        contentType: "application/json",
+        url: productAPI,
+        data: JSON.stringify(newProduct),
+        success: function(){
+            alert("thanh cong")
+            window.location.reload(false)
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+
+})
 
 ```
 
 > update sinh viên 
 
+1 html 
+
 ```
-function openModalUpdateSinhVien(idSinhVien) {
-    $("#modal_update_sinh_vien").modal('show');
+
+<!-- begin update thông tin product -->
+                <div
+                        class="modal fade"
+                        tabindex="-1"
+                        id="modal_update_product"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-lg"
+                         role="document">
+                        <div class="modal-content">
+                            <form id="form_product_update">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Cập
+                                        nhật sản phẩm</h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <span id="idProduct" style="color:red;"></span>
+    
+                                    <div class="form-group">
+                                        <label class="col-form-label">Tên sản phẩm</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="tenUpdate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">số lượng</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="soLuongUpdate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">giá nhập</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="giaNhapUpdate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">giá bán</label>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="giaBanUpdate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label">mô tả</label>
+                                                    <textarea id="my-textarea" class="form-control" name="" rows="3" id="moTaUpdate"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Hủy
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Cập
+                                        nhật
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- end update thông tin product -->
+                
+```
+
+2 
+
+```
+// thực hiện lấy các giá trị của product thông qua id 
+
+function update(id){
+    $("#modal_update_product").modal("show")
     $.ajax({
-        type: "GET",
+        type:"GET",
         contentType: "application/json",
-        url: SinhVienAPI + "/" + idSinhVien,
-        data: JSON.stringify(idSinhVien),
-        dataType: 'json',
-        success: function (responseData) {
-            console.log(responseData)
-            $("#id_sinh_vien_update").val(responseData.id);
-            $("#ten_sinh_vien_update").val(responseData.name);
+        url: productAPI+"/"+id,
+        success: function(responData){
+            $("#idProduct").val(responData.id)
+            $("#tenUpdate").val(responData.ten)
+            $("#soLuongUpdate").val(responData.so_luong)
+            $("#giaBanUpdate").val(responData.gia_ban)
+            $("#giaNhapUpdate").val(responData.gia_nhap)
+            $("#moTaUpdate").val(responData.mieu_ta)
+        
         },
-        error: function (e) {
-            console.log("ERROR : ", e);
+        error: function(e){
+            console.log(e)
         }
-    });
+    })
 }
 
-$("#form_sinh_vien_update").submit(function (event) {
-    event.preventDefault();
-    let tenSinhVien = $("#ten_sinh_vien_update").val();
-    let idSinhvien = $("#id_sinh_vien_update").val();
-    let sinhVienRequest = {};
-    sinhVienRequest["name"] = tenSinhVien;
-    if (tenSinhVien.length === 0) {
-        $("#errorMessageUpdate").text("Tên sinh vien không được để trống");
-    } else if (tenSinhVien.length < 6) {
-        $("#errorMessageUpdate").text("Tên sinh vien tối thiếu 6 ký tự");
-    } else {
-        $.ajax({
-            type: "PUT",
-            contentType: "application/json",
-            url: SinhVienAPI + "/" + idSinhvien,
-            data: JSON.stringify(sinhVienRequest),
-            dataType: 'json',
-            success: function () {
-                window.open(SinhVienView, '_self');
-                $("#modal_update_hoc_ky").modal("hide");
-            },
-            error: function (e) {
-                console.log("ERROR : ", e);
-            }
-        });
-    }
-});
+// thực hiện update lại dữ liệu 
+$("#form_product_update").submit(function(event){
+    event.preventDefault()
 
-```
-
-> xóa sinh viên 
-
-```
-function openModalRemoveSinhVien(sinhvienId) {
-    console.log(sinhvienId)
-    $("#modal_sinh_vien_remove").modal('show');
+    var id = $("#idProduct").val()
+    var product = {}
+    product["ten"] = $("#tenUpdate").val()
+    product["so_luong"] = $("#soLuongUpdate").val()
+    product["gia_nhap"] = $("#giaNhapUpdate").val()
+    product["gia_ban"] = $("#giaBanUpdate").val()
+    product["mieu_ta"] = $("#moTaUpdate").val()
     $.ajax({
-        type: "GET",
+        type:"PUT",
         contentType: "application/json",
-        url: SinhVienAPI + "/" + sinhvienId,
-        data: JSON.stringify(sinhvienId),
-        dataType: 'json',
-        success: function () {
-            $("#remove_sinh_vien").val(sinhvienId);
+        url: productAPI+"/"+id,
+        data: JSON.stringify(product),
+        success: function(){
+            alert("thanh cong")
+            window.location.reload(false)
         },
-        error: function (e) {
-            console.log("ERROR : ", e);
+        error: function(e){
+            console.log(e)
         }
-    });
+    })
+})
+
+
+```
+
+> xóa product
+
+1 html 
+
+```
+
+```
+
+2 js
+
+
+```
+// tìm kiểm product theo id và lấy id của produc để thực hiện xóa product 
+function deleteProduct(id){
+    $("#modal_product_remove").modal("show")
+    $.ajax({
+        type:"GET",
+        contentType: "application/json",
+        url: productAPI+"/"+id,
+        success: function(responData){
+            $("#id").val(responData.id)
+        
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
 }
 
-$("#form_sinh_vien_delete").submit(function (event) {
-    event.preventDefault();
-    let sinhvienId = $("#remove_sinh_vien").val();
+// thực hiện xóa sản phẩm 
 
+$("#form_product_delete").submit(function(event){
+    event.preventDefault()
+    var id = $("#id").val()
     $.ajax({
-        type: "DELETE",
+        type:"DELETE",
         contentType: "application/json",
-        url: SinhVienAPI + "/" + sinhvienId,
-        dataType: 'json',
-        success: function () {
-            window.open(SinhVienView, '_self');
-            $("#modal_update_hoc_ky").modal("hide");
+        url: productAPI+"/"+id,
+        success: function(){
+            alert("thanh cong")
+            window.location.reload(false)
         },
-        error: function (e) {
-            console.log("ERROR : ", e);
+        error: function(e){
+            console.log(e)
         }
-    });
-
-});
+    })
+})
 
 ```
 
