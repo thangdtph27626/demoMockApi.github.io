@@ -119,7 +119,7 @@ diện người dùng và UX trong một dự án.
 > hiển thị thông tin sản phẩm lên table 
 
 
-1 html
+1 index.html
 
 ```md
 
@@ -143,7 +143,7 @@ diện người dùng và UX trong một dự án.
                 
 ```
 
-2 js
+2 main.js
 
 ```md
 
@@ -189,7 +189,7 @@ function loadData(){
 
 > thêm products
 
-1 html
+1 index.html
 
 ```
                 <!-- begin thêm mới product-->
@@ -270,7 +270,7 @@ function loadData(){
                 
 ```
 
-2 js
+2 main.js
 
 
 ```
@@ -305,7 +305,7 @@ $("#form_create_product").submit(function(event){
 
 > update sinh viên 
 
-1 html 
+1 index.html 
 
 ```
 
@@ -380,7 +380,7 @@ $("#form_create_product").submit(function(event){
                 
 ```
 
-2 
+2 main.
 
 ```
 // thực hiện lấy các giá trị của product thông qua id 
@@ -437,13 +437,13 @@ $("#form_product_update").submit(function(event){
 
 > xóa product
 
-1 html 
+1 index.html 
 
 ```
 
 ```
 
-2 js
+2 main.js
 
 
 ```
@@ -485,5 +485,4 @@ $("#form_product_delete").submit(function(event){
 
 ```
 
-> lưu ý bạn có thể lấy html [tại đây](https://github.com/thangdtph27626/demo_crud_ajax.github.io)\
-> bạn có thể tìm hiểu về ajax [tại đây](https://thangdtph27626.github.io/demo_crud_ajax.github.io/)
+> lưu ý bạn có thể lấy toàn bộ code trong bài viết  [tại đây]([https://github.com/thangdtph27626/demo_crud_ajax.github.io](https://github.com/thangdtph27626/demoMockApi.github.io))\
